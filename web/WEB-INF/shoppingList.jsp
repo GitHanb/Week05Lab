@@ -25,7 +25,7 @@
             <br>
             ${itemList}
             <br><br>
-            <input type="submit" value="Delete" formaction="ShoppingList?action=delete">
+            <input type="submit" value="Delete">
         </div>
     </body>
 </html>
