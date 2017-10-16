@@ -5,27 +5,35 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>ShoppingList Page</title>
+        <title>Shopping List</title>
     </head>
     <body>
         <h1>Shopping List</h1>
         <div>
-            Hello, ${username} <a href="ShoppingList?action=logout">Logout</a>
+            Hello, ${username}
+            <a href ="ShoppingList?action=logout">Logout</a>
         </div>
+        <br>
+        
         <h1>List</h1>
-        <div>
-            <form action="ShoppingList?action=add" method="post">
-                Add item: <input type="text" name="item" value="${item}">
-                <input type="submit" value="Add">
-            </form>
-            <br>
-            ${itemList}
-            <br><br>
-            <input type="submit" value="Delete">
-        </div>
+        <form action="ShoppingList?action=add" method="post">
+            Add Item: <input type="text" name="textFieldAddStuff" value="">
+            <input type="submit" value="Add"><br>
+        </form>
+        ${shoppingListMessage}
+
+        <c:forTokens var="part" items="${theItem}" delims="[],">
+        <td>${part}</td><br>
+        </c:forTokens>
+         <br>
+         
+         <form action="shoppingList?action=delete" method="post">
+        	<input type="submit" name="deleteButton" value="Delete">
+         </form>
     </body>
 </html>
