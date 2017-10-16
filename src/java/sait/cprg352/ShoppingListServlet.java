@@ -8,7 +8,6 @@ package sait.cprg352;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -73,11 +72,14 @@ public class ShoppingListServlet extends HttpServlet
             getServletContext().getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
         }
         */
+        HttpSession session = request.getSession();
+        
         String action = request.getParameter("action");
         if(action!=null)
         {
             if(action.equals("logout"))
             {
+                session.invalidate();
                 request.setAttribute("registerMessage", "You have successfully logged out!");
             }
         }

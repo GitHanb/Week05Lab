@@ -22,18 +22,18 @@
         
         <h1>List</h1>
         <form action="ShoppingList?action=add" method="post">
-            Add Item: <input type="text" name="textFieldAddStuff" value="">
+            Add Item: <input type="text" name="item" value="">
             <input type="submit" value="Add"><br>
         </form>
         ${shoppingListMessage}
 
         <c:forTokens var="part" items="${theItem}" delims="[],">
-        <td>${part}</td><br>
+            <td>${part}</td><br>
         </c:forTokens>
          <br>
          
-         <form action="shoppingList?action=delete" method="post">
-        	<input type="submit" name="deleteButton" value="Delete">
-         </form>
+        <form action="shoppingList?action=delete" method="post">
+            <input type="submit" name="deleteButton" value="Delete">
+        </form>
     </body>
 </html>
