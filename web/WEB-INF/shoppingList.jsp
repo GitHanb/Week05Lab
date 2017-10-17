@@ -22,25 +22,13 @@
         
         <h1>List</h1>
         <form action="ShoppingList?action=add" method="post">
-            Add Item: <input type="text" name="item" value="">
+            Add Item: <input type="text" name="item" value="${item}">
             <input type="submit" value="Add">
         </form>
         <br>
         ${shoppingListMessage}
-        <%-- 
         <c:if test="${listsize > 0}">
-            <form action="Shoppinglist?action=delete" method="post">
-                <c:forEach var="item" items="${itemlist}" varStatus="status">
-                    <input type="radio" name="itemname" value="${status.index}"> 
-                    ${item}
-                    <br>
-                </c:forEach>
-                <input type="submit" value="Delete">
-            </form>
-        </c:if>
-        --%>
-         
-         <form action="ShoppingList?action=delete" method="post">
+            <form action="ShoppingList?action=delete" method="post">
                 <c:forEach var="item" items="${itemlist}" varStatus="status">
                     <input type="radio" name="itemname" value="${status.index}"> 
                     ${item}
@@ -48,6 +36,8 @@
                 </c:forEach>
                 <br>
                 <input type="submit" value="Delete">
-         </form>
+            </form>
+        </c:if>
+        
     </body>
 </html>

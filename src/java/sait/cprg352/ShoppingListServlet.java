@@ -75,7 +75,7 @@ public class ShoppingListServlet extends HttpServlet
        String action = request.getParameter("action");
        String username = request.getParameter("username");
        
-       ArrayList<String> itemList = (ArrayList<String>) session.getAttribute("itemList");
+       ArrayList<String> itemList = (ArrayList<String>) session.getAttribute("itemlist");
        
        if(itemList==null)
        {
@@ -95,14 +95,13 @@ public class ShoppingListServlet extends HttpServlet
                else
                {
                    session.setAttribute("username", username);
-                   getServletContext().getRequestDispatcher("/WEB-INF/shoppingList.jsp").forward(request, response);
+                   response.sendRedirect("ShoppingList");
                } 
             }
            //add
            else if(action.equals("add"))
            {
                String item = request.getParameter("item");
-               
                if(item.equals(""))
                {
                    request.setAttribute("shoppingListMessage", "Please enter a valid item");
@@ -112,7 +111,8 @@ public class ShoppingListServlet extends HttpServlet
                {
                    itemList.add(item);
                    session.setAttribute("itemlist", itemList);
-                   getServletContext().getRequestDispatcher("/WEB-INF/shoppingList.jsp").forward(request, response);
+                   //getServletContext().getRequestDispatcher("/WEB-INF/shoppingList.jsp").forward(request, response);
+                   response.sendRedirect("ShoppingList");
                }
             }
            //delete
@@ -121,10 +121,9 @@ public class ShoppingListServlet extends HttpServlet
                int index = Integer.parseInt(request.getParameter("itemname"));
                itemList.remove(index);
                session.setAttribute("itemlist", itemList);
-               getServletContext().getRequestDispatcher("/WEB-INF/shoppingList.jsp").forward(request, response);
+               //request.setAttribute("item", itemList.get(index));
+               response.sendRedirect("ShoppingList");
            }          
        }
-  
     }
-
 }
