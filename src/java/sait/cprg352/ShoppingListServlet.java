@@ -77,7 +77,7 @@ public class ShoppingListServlet extends HttpServlet
        
        if(itemList==null)
        {
-           itemList = new ArrayList<String>();
+           itemList = new ArrayList<>();
        }
 
        if(action!=null)
@@ -109,7 +109,7 @@ public class ShoppingListServlet extends HttpServlet
                else
                {
                    itemList.add(item);
-                   session.setAttribute("itemList", itemList);
+                   session.setAttribute("itemlist", itemList);
                    getServletContext().getRequestDispatcher("/WEB-INF/shoppingList.jsp").forward(request, response);
                }
             }
