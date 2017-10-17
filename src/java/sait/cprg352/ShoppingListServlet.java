@@ -22,11 +22,13 @@ public class ShoppingListServlet extends HttpServlet
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException 
-    {
-        
+    {  
         HttpSession session = request.getSession();
+        
         String username = (String) session.getAttribute("username");
+        
         ArrayList<String> itemList;
+        
         String action = request.getParameter("action");
         
         if(action==null)
@@ -116,9 +118,9 @@ public class ShoppingListServlet extends HttpServlet
            //delete
            else if(action.equals("delete"))
            {
-               int index = Integer.parseInt(request.getParameter("itemName"));
+               int index = Integer.parseInt(request.getParameter("itemname"));
                itemList.remove(index);
-               session.setAttribute("itemList", itemList);
+               session.setAttribute("itemlist", itemList);
                getServletContext().getRequestDispatcher("/WEB-INF/shoppingList.jsp").forward(request, response);
            }          
        }

@@ -27,8 +27,8 @@
         </form>
         <br>
         ${shoppingListMessage}
-         <br>
-         <c:if test="${listsize > 0}">
+        <%-- 
+        <c:if test="${listsize > 0}">
             <form action="Shoppinglist?action=delete" method="post">
                 <c:forEach var="item" items="${itemlist}" varStatus="status">
                     <input type="radio" name="itemname" value="${status.index}"> 
@@ -38,5 +38,16 @@
                 <input type="submit" value="Delete">
             </form>
         </c:if>
+        --%>
+         
+         <form action="ShoppingList?action=delete" method="post">
+                <c:forEach var="item" items="${itemlist}" varStatus="status">
+                    <input type="radio" name="itemname" value="${status.index}"> 
+                    ${item}
+                    <br>
+                </c:forEach>
+                <br>
+                <input type="submit" value="Delete">
+         </form>
     </body>
 </html>
